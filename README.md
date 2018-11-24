@@ -14,11 +14,17 @@ Check out the Demo!
  - Programmatic navigation and control allow you to customize the experience to your need.
  - Customizable prompt and button styling.
 
+## Built With
+
+Ngy-Tutorial is built with Angular 6, icons from IonIcons
+
 ## Installation
 
-Add Ngy-Tutorial library by using npm with `npm install ngy-tutorial` or yarn with `yarn add ngy-tutorial`
+Add the library by using npm with `npm install ngy-tutorial` or yarn with `yarn add ngy-tutorial`
 
 ## Getting Started (even the tutorial needs a tutorial)
 
 1. Install the package with npm or yarn.
-2. Add the module to your root module with `NgyTutorial.forRoot()`
+2. Add the module to your root module with `NgyTutorial.forRoot()`.
+3. Place element `<ngy-tutorial></ngy-tutorial>` in your app.
+4. You can now inject and use `NgyTutorial` service to control the tutorial, see the API for available commands.
