@@ -116,7 +116,8 @@
           <code style="white-space: pre-wrap;" [innerHTML]="code">
 
           </code>
-          <p>For a more in-depth example, checkout the code for <a href="https://github.com/Yamazaki93/ngy-tutorial/blob/master/ngy-tutorial-app/src/app/app.component.ts">this demo page component</a> and <a href="https://github.com/Yamazaki93/ngy-tutorial/blob/master/ngy-tutorial-app/src/app/app.module.ts">module</a></p>
+          <p>For a more in-depth example, checkout the code for <a href="https://github.com/Yamazaki93/ngy-tutorial/blob/master/ngy-tutorial-app/src/app/app.component.ts">this
+              demo page component</a> and <a href="https://github.com/Yamazaki93/ngy-tutorial/blob/master/ngy-tutorial-app/src/app/app.module.ts">module</a></p>
         </section>
         <section class="mt-3" id="api-section">
           <h2>API</h2>
@@ -146,7 +147,7 @@
               <div class="row">
                 <div class="col-12">
                   <p>Field - <code>CurrentStep: Observable&lt;number&gt;</code></p>
-                  <p>The current tutorial step as a zero-indexed number. NOTE, this should not be used to determine if
+                  <p>The current tutorial step as a zero-indexed number. Note, this should not be used to determine if
                     tutorial is in progress, use <code>tutorialInProgress</code> instead.</p>
                 </div>
               </div>
@@ -226,16 +227,17 @@
                   <p>Optional Field <code>disableInteraction?: boolean</code></p>
                   <p>If this is set to <code>true</code>. Interaction with components other than the tutorial is
                     disabled, the "viewing window" will still focus on the element provided in <code>relatedElement</code>
-                    but no action can be perfored. It cannot be set to <code>true</code> if <code>disableNext</code> is
+                    but no action can be performed. It cannot be set to <code>true</code> if <code>disableNext</code>
+                    is
                     set to <code>true</code>.</p>
                   <p>Optional Field <code>disableNext?: boolean</code></p>
-                  <p>If this is set to <code>true</code>, the next button (the finish button, if it is at last step) is
+                  <p>If this is set to <code>true</code>, the next button (the finish button, if it is at the last step) is
                     disabled. To progress forward, you can still call <code>NgyTutorialService.nextStep()</code>. It
                     cannot be set to <code>true</code> if <code>disableInteraction</code> is set to <code>true</code>.</p>
                   <p>Optional Field <code>disablePrevious?: boolean</code></p>
-                  <p>If this is set to <code>true</code>, the previous button (the skip button, if it is at first step)
+                  <p>If this is set to <code>true</code>, the previous button (the skip button, if it is at the first step)
                     is disabled. To progress backward, you can still call <code>NgyTutorialService.previousStep()</code>.
-                    NOTE: It CAN be set to <code>true</code> when <code>disableNext</code> is set to <code>true</code>
+                    Note: It CAN be set to <code>true</code> when <code>disableNext</code> is set to <code>true</code>
                     or <code>disableInteraction</code> is <code>true</code>, it is up to your app to determine the
                     availability of "previous" step.</p>
                   <p>Optional Field <code>classToAdd?: IStepClasses</code></p>

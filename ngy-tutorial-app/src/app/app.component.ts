@@ -45,7 +45,7 @@ export class AppComponent implements OnInit {
       relatedElement: 'exampleFormControlInput1',
       placement: StepPromptPlacement.Below
     });
-    tutorialService.addStep('Custom UI Styling', 'You can customize the prompt styling and button texts of each step. This prompt is red because the input is disabled for very improtant reasons. If you haven\'t noticed, this tutorial is using the bootstrap styles applied to the app.', {
+    tutorialService.addStep('Custom UI Styling', 'You can customize the prompt styling and button texts of each step. This prompt is red because the input is disabled for very important reasons. If you haven\'t noticed, the prompt is currently using the bootstrap styles applied to the hosting app.', {
       relatedElement: 'disabledInput',
       placement: StepPromptPlacement.Left,
       classToAdd: {
