@@ -5,16 +5,19 @@
   <div class="action-container">
     <div class="actions left">
       <button id="lib-ngy-tutorial-previous-btn" *ngIf="(stepNumber !== 0) && !step.options.disablePrevious" class="ngy-tutorial-previous-btn"
-        (click)="previousStep()" [ngClass]="appliedClasses.previousBtn"><i [ngClass]="appliedClasses.previousIcon" *ngIf="appliedClasses.previousIcon"></i> {{appliedTexts.previous ? appliedTexts.previous : "Previous"}}</button>
+        (click)="previousStep()" [ngClass]="appliedClasses.previousBtn"><i [ngClass]="appliedClasses.previousIcon"
+          *ngIf="appliedClasses.previousIcon"></i> {{appliedTexts.previous ? appliedTexts.previous : "Previous"}}</button>
       <button id="lib-ngy-tutorial-skip-btn" [ngClass]="appliedClasses.skipBtn" *ngIf="stepNumber===0" class="ngy-tutorial-skip-btn"
-        (click)="finishTutorial()"><i [ngClass]="appliedClasses.skipIcon" *ngIf="appliedClasses.skipIcon"></i> {{appliedTexts.skip ? appliedTexts.skip : "Skip"}}</button>
+        (click)="finishTutorial()"><i [ngClass]="appliedClasses.skipIcon" *ngIf="appliedClasses.skipIcon"></i>
+        {{appliedTexts.skip ? appliedTexts.skip : "Skip"}}</button>
     </div>
-    <div class="
-          actions right">
+    <div class="actions right">
       <button id="lib-ngy-tutorial-next-btn" *ngIf="(stepNumber !== totalSteps - 1) && !step.options.disableNext" class="ngy-tutorial-next-btn"
-        (click)="nextStep()" [ngClass]="appliedClasses.nextBtn"><i [ngClass]="appliedClasses.nextIcon" *ngIf="appliedClasses.nextIcon"></i> {{appliedTexts.next ? appliedTexts.next : "Next"}}</button>
+        (click)="nextStep()" [ngClass]="appliedClasses.nextBtn"><i [ngClass]="appliedClasses.nextIcon" *ngIf="appliedClasses.nextIcon"></i>
+        {{appliedTexts.next ? appliedTexts.next : "Next"}}</button>
       <button id="lib-ngy-tutorial-finish-btn" *ngIf="(stepNumber === totalSteps - 1) && !step.options.disableNext"
-        class="ngy-tutorial-finish-btn" (click)="finishTutorial()" [ngClass]="appliedClasses.finishBtn"><i [ngClass]="appliedClasses.finishIcon" *ngIf="appliedClasses.finishIcon"></i>
+        class="ngy-tutorial-finish-btn" (click)="finishTutorial()" [ngClass]="appliedClasses.finishBtn"><i [ngClass]="appliedClasses.finishIcon"
+          *ngIf="appliedClasses.finishIcon"></i>
         {{appliedTexts.finish ? appliedTexts.finish : "Finish"}}</button>
     </div>
   </div>

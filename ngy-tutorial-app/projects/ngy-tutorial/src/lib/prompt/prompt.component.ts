@@ -129,11 +129,22 @@ export class PromptComponent implements OnInit {
     }
   }
   private setPromptPosition(x: number, y: number) {
+    const promptPositionInfo = this.prompt.nativeElement.getBoundingClientRect();
+    const viewW = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+    const viewH = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+    const promptH = promptPositionInfo.height;
+    const promptW = promptPositionInfo.width;
     if (x < 10) {
       x = 10;
     }
     if (y < 10) {
       y = 10;
+    }
+    if (x > viewW - promptW) {
+      x = viewW - promptW;
+    }
+    if (y > viewH - promptH) {
+      y = viewH - promptH;
     }
     this.prompt.nativeElement.style.left = `${x}px`;
     this.prompt.nativeElement.style.top = `${y}px`;
