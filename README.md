@@ -58,5 +58,6 @@ Tested under Angular 6
 
 There are currently few limitations of Ngy-Tutorial and some will be improved in the future.
 
+ - Desktop (Large screens) only: Currently it only supports desktop and larger screen tablets. Phone and mobile support is planned. The tutorial might not show correctly when viewed with smaller screen devices.
  - Scrolling support: The tutorial currently is limited to single-view layout tutorials. In the future it is planned to support scrolling to element.
  - Square view window only: Because of the way how "covers" are layed out, the preview window that hightlight an element is square only.
