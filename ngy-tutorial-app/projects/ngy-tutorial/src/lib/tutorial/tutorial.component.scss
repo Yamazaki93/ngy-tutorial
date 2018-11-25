@@ -1,4 +1,5 @@
-.tutorial-container {
+
+:host {
     position: fixed;
     left: 0;
     top: 0;
@@ -17,7 +18,7 @@
     position: fixed;
     z-index: 998;
 }
-app-prompt {
+lib-ngy-tutorial-prompt {
     top: 0;
     left: 0;
     position: fixed;

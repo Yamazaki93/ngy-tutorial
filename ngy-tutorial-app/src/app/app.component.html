@@ -1,20 +1,196 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<div class="main-container d-flex flex-column">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-default">
+    <a class="navbar-brand" href="https://github.com/Yamazaki93/ngy-tutorial">Ngy-Tutorial</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    </div>
+  </nav>
+  <div class="container mt-3">
+    <div class="row d-flex flex-row">
+      <div class="col-3">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link active" href="#">Demo</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Getting Started</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">API</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Support This Plugin</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://github.com/Yamazaki93/ngy-tutorial">Github</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-9 contents">
+        <section>
+          <h2>Demo</h2>
+          <p>This demo section contains some cool UI 😉. So cool that we need to use a tutorial to show our user what
+            to
+            do.</p>
+          <h3>Here's Large Form That No One Knows How To Fill</h3>
+          <form>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <input type="email" class="form-control form-control-alternative" id="exampleFormControlInput1"
+                    placeholder="Enter something...">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <input type="text" placeholder="Don't know why this is disabled" class="form-control form-control-alternative"
+                    disabled />
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <div class="input-group input-group-alternative mb-4">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="ion-ios-search"></i></span>
+                    </div>
+                    <input class="form-control form-control-alternative" placeholder="This doesn't really search anything"
+                      type="text">
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <div class="input-group input-group-alternative mb-4">
+                    <input class="form-control" placeholder="This input has a nice calendar icon" type="text">
+                    <div class="input-group-append">
+                      <span class="input-group-text"><i class="ion-ios-calendar"></i></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <button class="btn btn-danger">Important Button</button>
+              </div>
+            </div>
+          </form>
+          <div class="row mt-3">
+            <div class="col-12">
+              <button class="btn btn-primary">Restart The Tutorial</button>
+            </div>
+          </div>
+        </section>
+        <section class="mt-3">
+          <h2>Getting Started</h2>
+          <p>
+            Add the library by using npm with <code>npm install ngy-tutorial</code> or yarn with <code>yarn add ngy-tutorial</code>
+          </p>
+          <ol>
+            <li>Add the module to your root module with <code>NgyTutorialModule.forRoot()</code> under <code>imports</code>
+              in your <code>app.module.ts</code>.
+            </li>
+            <li>Place element <code>&lt;lib-ngy-tutorial&gt;&lt;/lib-ngy-tutorial&gt;</code> in your app.</li>
+            <li>You can now inject and use <code>NgyTutorialService</code> service to control the tutorial, see the API
+              for available commands and options.</li>
+          </ol>
+        </section>
+        <section class="mt-3">
+          <h2>API</h2>
+          <div class="card">
+            <div class="card-body">
+              <h2 class="card-title">Module - <code>NgyTutorialModule</code></h2>
+              <div class="row">
+                <div class="col-12">
+                  <p><code>forRoot(options: IInitializationOptions)</code></p>
+                  <p>Initializes the module with the passed in options, see <code>IInitializationOptions</code> for
+                    available options</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-body">
+              <h2 class="card-title">Service - <code>NgyTutorialService</code></h2>
+              <div class="row">
+                <div class="col-12">
+                  <p><code>addStep(title: string, prompt: string, options?: IStepOption)</code></p>
+                  <p>Adds a tutorial step to the entire tutorial. <code>title</code> is the one-line heading on the top
+                    of the
+                    dialog and <code>prompt</code> is the detailed texts displayed below that. If the tutorial has
+                    started, the newly added steps will only appear on the next run. <code>options?</code> is
+                    the optional options for this step, see <code>IStepOption</code> for available options</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <p><code>removeStep(stepNumber: number)</code></p>
+                  <p>Removes a tutorial step with the given step number. <code>stepNumber</code> is the zero-indexed
+                    number specifying the index of the step to remove. If the tutorial has started, the removal will
+                    take effect during the next run. </p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <p><code>showTutorial()</code></p>
+                  <p>Starts the tutorial sequence. If tutorial is already started, this will restart the tutorial.</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <p><code>hideTutorisl()</code></p>
+                  <p>Stops the tutorial sequence. If the tutorial has not started, this has no effect.</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <p><code>nextStep()</code></p>
+                  <p>Advances the tutorial to the next step. If the tutorial is at the last step, calling <code>nextStep</code>
+                    will end the tutorial.</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <p><code>previousStep()</code></p>
+                  <p>Reverts the tutorial to the previous step. If the tutorial is at the first step, calling <code>previousStep</code>
+                    will end the tutorial.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-body">
+              <h2 class="card-title">Interface - <code>IInitializationOptions</code></h2>
+              <div class="row">
+                <div class="col-12">
+                  <p>Field <code>classToAdd?: IStepClasses</code></p>
+                  <p>Specifies classes to apply to the prompt dialog to allow customized styling. See <code>IStepClasses</code>
+                    for list of available sub-fields</p>
+                  <p>Field <code>actionTexts?: IActionTexts</code></p>
+                  <p>Specifies the button texts that appear on the prompt. See <code>IActionTexts</code>
+                    for list of available sub-fields</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="mt-3">
+          <h2>Support Ngy-Tutorial</h2>
+        </section>
+      </div>
+    </div>
+  </div>
+</div>
+<lib-ngy-tutorial></lib-ngy-tutorial>

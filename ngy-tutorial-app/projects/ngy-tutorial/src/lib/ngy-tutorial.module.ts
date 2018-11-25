@@ -4,12 +4,12 @@ import { PromptComponent } from './prompt/prompt.component';
 import { NgyTutorialService } from './ngy-tutorial.service';
 import { CommonModule } from '@angular/common';
 import { IInitializationOptions } from './api/i-options';
-
-export const OPTIONS = new InjectionToken<IInitializationOptions>('options');
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    BrowserAnimationsModule
   ],
   declarations: [NgyTutorialComponent, PromptComponent],
   exports: [NgyTutorialComponent]
@@ -21,9 +21,9 @@ export class NgyTutorialModule {
       providers: [
         NgyTutorialService,
         {
-          provide: OPTIONS,
+          provide: 'ngy-tutorial-options',
           useValue: options
-        },
+        }
       ]
     };
   }

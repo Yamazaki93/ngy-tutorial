@@ -58,12 +58,14 @@ export class NgyTutorialComponent implements OnInit {
     });
     this.svc.navigation.subscribe(steps => {
       this.currentStep += steps;
-      if (this.currentStep >= this.steps.length) {
+      if (this.currentStep >= this.steps.length || this.currentStep < 0) {
         this.enabled = false;
       }
-      setTimeout(() => {
-        this.setupUIForStep();
-      });
+      if (this.enabled) {
+        setTimeout(() => {
+          this.setupUIForStep();
+        });
+      }
     });
   }
 

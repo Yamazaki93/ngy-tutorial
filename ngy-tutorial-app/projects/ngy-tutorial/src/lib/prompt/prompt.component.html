@@ -1,18 +1,21 @@
-<div class="prompt-container smooth-2 ngy-tutorial-prompt-container" [ngClass]="appliedClasses.container" *ngIf="step" #prompt>
+<div class="prompt-container smooth-2 ngy-tutorial-prompt-container" [ngClass]="appliedClasses.container" *ngIf="step"
+  #prompt>
   <h2 class="title ngy-tutorial-title" [ngClass]="appliedClasses.title" *ngIf="step.title">{{step.title}}</h2>
   <p class="prompt ngy-tutorial-prompt" [ngClass]="appliedClasses.prompt" *ngIf="step.prompt">{{step.prompt}}</p>
   <div class="action-container">
     <div class="actions left">
-      <button id="ngt-previous-btn" *ngIf="(stepNumber !== 0) && !step.options.disablePrevious" class="btn btn-primary btn-outline ngy-tutorial-previous-btn"
-        (click)="previousStep()" [ngClass]="appliedClasses.previousBtn"><i class="ion-ios-arrow-back"></i> Previous</button>
-      <button id="ngt-skip-btn" *ngIf="stepNumber === 0" class="btn btn-primary btn-outline ngy-tutorial-skip-btn" (click)="finishTutorial()"><i
-          class="ion-ios-alert" [ngClass]="appliedClasses.skipBtn"></i> Skip Tutorial</button>
+      <button id="lib-ngy-tutorial-previous-btn" *ngIf="(stepNumber !== 0) && !step.options.disablePrevious" class="ngy-tutorial-previous-btn"
+        (click)="previousStep()" [ngClass]="appliedClasses.previousBtn"><i [ngClass]="appliedClasses.previousIcon" *ngIf="appliedClasses.previousIcon"></i> {{appliedTexts.previous ? appliedTexts.previous : "Previous"}}</button>
+      <button id="lib-ngy-tutorial-skip-btn" [ngClass]="appliedClasses.skipBtn" *ngIf="stepNumber===0" class="ngy-tutorial-skip-btn"
+        (click)="finishTutorial()"><i [ngClass]="appliedClasses.skipIcon" *ngIf="appliedClasses.skipIcon"></i> {{appliedTexts.skip ? appliedTexts.skip : "Skip"}}</button>
     </div>
-    <div class="actions right">
-      <button id="ngt-next-btn" *ngIf="(stepNumber !== totalSteps - 1) && !step.options.disableNext" class="btn btn-primary btn-outline ngy-tutorial-next-btn"
-        (click)="nextStep()" [ngClass]="appliedClasses.nextBtn"><i class="ion-ios-arrow-forward"></i> Next</button>
-      <button id="ngt-finish-btn" *ngIf="(stepNumber === totalSteps - 1) && !step.options.disableNext" class="btn btn-success btn-outline ngy-tutorial-finish-btn"
-        (click)="finishTutorial()" [ngClass]="appliedClasses.finishBtn"><i class="ion-ios-checkmark"></i> Finish</button>
+    <div class="
+          actions right">
+      <button id="lib-ngy-tutorial-next-btn" *ngIf="(stepNumber !== totalSteps - 1) && !step.options.disableNext" class="ngy-tutorial-next-btn"
+        (click)="nextStep()" [ngClass]="appliedClasses.nextBtn"><i [ngClass]="appliedClasses.nextIcon" *ngIf="appliedClasses.nextIcon"></i> {{appliedTexts.next ? appliedTexts.next : "Next"}}</button>
+      <button id="lib-ngy-tutorial-finish-btn" *ngIf="(stepNumber === totalSteps - 1) && !step.options.disableNext"
+        class="ngy-tutorial-finish-btn" (click)="finishTutorial()" [ngClass]="appliedClasses.finishBtn"><i [ngClass]="appliedClasses.finishIcon" *ngIf="appliedClasses.finishIcon"></i>
+        {{appliedTexts.finish ? appliedTexts.finish : "Finish"}}</button>
     </div>
   </div>
 </div>

@@ -1,0 +1,20 @@
+.main-container {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    nav {
+        flex-shrink: 0;
+    }
+    .container {
+        height: 100%;
+        min-height: 0;
+        & > .row {
+            height: 100%;
+        }
+        .contents {
+            height: 100%;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+    }
+}
