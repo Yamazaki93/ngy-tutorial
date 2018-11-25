@@ -1,7 +1,7 @@
 <div class="prompt-container smooth-2 ngy-tutorial-prompt-container" [ngClass]="appliedClasses.container" *ngIf="step"
   #prompt>
-  <h2 class="title ngy-tutorial-title" [ngClass]="appliedClasses.title" *ngIf="step.title">{{step.title}}</h2>
-  <p class="prompt ngy-tutorial-prompt" [ngClass]="appliedClasses.prompt" *ngIf="step.prompt">{{step.prompt}}</p>
+  <h2 class="title ngy-tutorial-title" [ngClass]="appliedClasses.title" *ngIf="step.title" [innerHTML]="titleSafe"></h2>
+  <p class="prompt ngy-tutorial-prompt" [ngClass]="appliedClasses.prompt" *ngIf="step.prompt" [innerHTML]="promptSafe"></p>
   <div class="action-container">
     <div class="actions left">
       <button id="lib-ngy-tutorial-previous-btn" *ngIf="(stepNumber !== 0) && !step.options.disablePrevious" class="ngy-tutorial-previous-btn"

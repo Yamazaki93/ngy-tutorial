@@ -9,9 +9,18 @@ describe('PromptComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PromptComponent ]
+      declarations: [PromptComponent], providers: [
+        {
+          provide: 'ngy-tutorial-options',
+          useValue: {
+            classToAdd: {
+              container: ['default']
+            }
+          }
+        }
+      ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -34,25 +43,25 @@ describe('PromptComponent', () => {
     component.stepNumber = 3;
     component.totalSteps = 4;
     fixture.detectChanges();
-    expect(fixture.nativeElement.querySelector('#ngt-finish-btn')).toBeTruthy();
+    expect(fixture.nativeElement.querySelector('#lib-ngy-tutorial-finish-btn')).toBeTruthy();
   });
   it('should show skip button when step is the first step', () => {
     component.stepNumber = 0;
     component.totalSteps = 2;
     fixture.detectChanges();
-    expect(fixture.nativeElement.querySelector('#ngt-skip-btn')).toBeTruthy();
+    expect(fixture.nativeElement.querySelector('#lib-ngy-tutorial-skip-btn')).toBeTruthy();
   });
   it('should show next button when step is the not the last step', () => {
     component.stepNumber = 0;
     component.totalSteps = 2;
     fixture.detectChanges();
-    expect(fixture.nativeElement.querySelector('#ngt-next-btn')).toBeTruthy();
+    expect(fixture.nativeElement.querySelector('#lib-ngy-tutorial-next-btn')).toBeTruthy();
   });
   it('should show previous button when step is the not the first step', () => {
     component.stepNumber = 1;
     component.totalSteps = 2;
     fixture.detectChanges();
-    expect(fixture.nativeElement.querySelector('#ngt-previous-btn')).toBeTruthy();
+    expect(fixture.nativeElement.querySelector('#lib-ngy-tutorial-previous-btn')).toBeTruthy();
   });
   it('should not show next button when disableNext is set to true', () => {
     component.step = {
@@ -63,6 +72,21 @@ describe('PromptComponent', () => {
       }
     };
     fixture.detectChanges();
-    expect(fixture.nativeElement.querySelector('#ngt-next-btn')).not.toBeTruthy();
+    expect(fixture.nativeElement.querySelector('#lib-ngy-tutorial-next-btn')).not.toBeTruthy();
+  });
+  it('should aggregate classes from initialization options and step', () => {
+    component.step = {
+      title: 'hi',
+      prompt: 'hi',
+      options: {
+        classToAdd: {
+          container: ['step']
+        }
+      }
+    };
+    component.ngOnInit();
+    fixture.detectChanges();
+    expect(fixture.nativeElement.querySelector('.prompt-container').classList).toContain('step');
+    expect(fixture.nativeElement.querySelector('.prompt-container').classList).toContain('default');
   });
 });

@@ -14,10 +14,19 @@ describe('TutorialComponent', () => {
       imports: [
         BrowserAnimationsModule
       ],
-      providers: [NgyTutorialService],
-      declarations: [ NgyTutorialComponent, PromptComponent ]
+      providers: [NgyTutorialService,
+        {
+          provide: 'ngy-tutorial-options',
+          useValue: {
+            classesToAdd: {
+              container: ['default']
+            }
+          }
+        }
+      ],
+      declarations: [NgyTutorialComponent, PromptComponent]
     })
-    .compileComponents();
+      .compileComponents();
     svc = TestBed.get(NgyTutorialService);
   }));
 
@@ -34,13 +43,13 @@ describe('TutorialComponent', () => {
     svc.showTutorial();
     fixture.detectChanges();
     tick(300);
-    expect(fixture.nativeElement.querySelector('app-prompt')).toBeNull();
+    expect(fixture.nativeElement.querySelector('lib-ngy-tutorial-prompt')).toBeNull();
   }));
   it('should show tutorial overlay if at least one step present', fakeAsync(() => {
     svc.addStep('Welcome', 'hi');
     svc.showTutorial();
     fixture.detectChanges();
     tick(300);
-    expect(fixture.nativeElement.querySelector('app-prompt')).not.toBeNull();
+    expect(fixture.nativeElement.querySelector('lib-ngy-tutorial-prompt')).not.toBeNull();
   }));
 });

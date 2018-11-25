@@ -15,6 +15,9 @@
             height: 100%;
             overflow-x: hidden;
             overflow-y: auto;
+            &.hide-overflow {
+                overflow-y: hidden;
+            }
         }
     }
 }

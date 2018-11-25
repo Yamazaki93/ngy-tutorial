@@ -56,10 +56,10 @@ export class NgyTutorialComponent implements OnInit {
         this.enabled = false;
       }
     });
-    this.svc.navigation.subscribe(steps => {
-      this.currentStep += steps;
+    this.svc.currentStep.subscribe(step => {
+      this.currentStep = step;
       if (this.currentStep >= this.steps.length || this.currentStep < 0) {
-        this.enabled = false;
+        this.svc.hideTutorial();
       }
       if (this.enabled) {
         setTimeout(() => {
@@ -91,14 +91,15 @@ export class NgyTutorialComponent implements OnInit {
           this.coverAll();
         }
       }
+      this.prompt.ngOnInit();
     }
   }
   private coverElement(element: Element) {
     const positionInfo = element.getBoundingClientRect();
     const margin = 10;
     this.setPosition(this.elementCover.nativeElement,
-      positionInfo.top - margin,
       positionInfo.left - margin,
+      positionInfo.top - margin,
       positionInfo.width + 2 * margin,
       positionInfo.height + 2 * margin);
   }

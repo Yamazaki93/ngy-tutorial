@@ -2,6 +2,7 @@ import { Component, OnInit, Input, ViewChild, ElementRef, Inject } from '@angula
 import { ITutorialStep } from '../api/i-tutorial-step';
 import { StepPromptPlacement, IInitializationOptions, IStepClasses, IActionTexts } from '../api/i-options';
 import { NgyTutorialService } from '../ngy-tutorial.service';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
   selector: 'lib-ngy-tutorial-prompt',
@@ -16,8 +17,11 @@ export class PromptComponent implements OnInit {
   @ViewChild('prompt') prompt: ElementRef;
   appliedClasses: IStepClasses;
   appliedTexts: IActionTexts;
+  titleSafe: SafeHtml;
+  promptSafe: SafeHtml;
   constructor(
     private svc: NgyTutorialService,
+    private sani: DomSanitizer,
     @Inject('ngy-tutorial-options') private options: IInitializationOptions
   ) {
     this.appliedClasses = {};
@@ -25,6 +29,8 @@ export class PromptComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.appliedClasses = {};
+    this.appliedTexts = {};
     if (this.options.classToAdd) {
       this.appliedClasses.container = this.options.classToAdd.container ? this.options.classToAdd.container : [];
       this.appliedClasses.title = this.options.classToAdd.title ? this.options.classToAdd.title : [];
@@ -40,13 +46,20 @@ export class PromptComponent implements OnInit {
       this.appliedClasses.skipIcon = this.options.classToAdd.skipIcon ? this.options.classToAdd.skipIcon : '';
     }
     if (this.step.options && this.step.options.classToAdd) {
-      this.appliedClasses.container = this.appliedClasses.container.concat(this.step.options.classToAdd.container);
-      this.appliedClasses.title = this.appliedClasses.title.concat(this.step.options.classToAdd.title);
-      this.appliedClasses.prompt = this.appliedClasses.prompt.concat(this.step.options.classToAdd.prompt);
-      this.appliedClasses.nextBtn = this.appliedClasses.nextBtn.concat(this.step.options.classToAdd.nextBtn);
-      this.appliedClasses.previousBtn = this.appliedClasses.previousBtn.concat(this.step.options.classToAdd.previousBtn);
-      this.appliedClasses.finishBtn = this.appliedClasses.finishBtn.concat(this.step.options.classToAdd.finishBtn);
-      this.appliedClasses.skipBtn = this.appliedClasses.skipBtn.concat(this.step.options.classToAdd.skipBtn);
+      // tslint:disable-next-line:max-line-length
+      this.appliedClasses.container = this.appliedClasses.container.concat(this.step.options.classToAdd.container ? this.step.options.classToAdd.container : []);
+      // tslint:disable-next-line:max-line-length
+      this.appliedClasses.title = this.appliedClasses.title.concat(this.step.options.classToAdd.title ? this.step.options.classToAdd.title : []);
+      // tslint:disable-next-line:max-line-length
+      this.appliedClasses.prompt = this.appliedClasses.prompt.concat(this.step.options.classToAdd.prompt ? this.step.options.classToAdd.prompt : []);
+      // tslint:disable-next-line:max-line-length
+      this.appliedClasses.nextBtn = this.appliedClasses.nextBtn.concat(this.step.options.classToAdd.nextBtn ? this.step.options.classToAdd.nextBtn : []);
+      // tslint:disable-next-line:max-line-length
+      this.appliedClasses.previousBtn = this.appliedClasses.previousBtn.concat(this.step.options.classToAdd.previousBtn ? this.step.options.classToAdd.previousBtn : []);
+      // tslint:disable-next-line:max-line-length
+      this.appliedClasses.finishBtn = this.appliedClasses.finishBtn.concat(this.step.options.classToAdd.finishBtn ? this.step.options.classToAdd.finishBtn : []);
+      // tslint:disable-next-line:max-line-length
+      this.appliedClasses.skipBtn = this.appliedClasses.skipBtn.concat(this.step.options.classToAdd.skipBtn ? this.step.options.classToAdd.skipBtn : []);
 
       // tslint:disable-next-line:max-line-length
       this.appliedClasses.nextIcon = this.step.options.classToAdd.nextIcon ? this.step.options.classToAdd.nextIcon : this.appliedClasses.nextIcon;
@@ -58,13 +71,21 @@ export class PromptComponent implements OnInit {
       this.appliedClasses.skipIcon = this.step.options.classToAdd.skipIcon ? this.step.options.classToAdd.skipIcon : this.appliedClasses.skipIcon;
     }
     if (this.options.actionTexts) {
-      this.appliedTexts = this.options.actionTexts;
+      this.appliedTexts = {
+        ...this.options.actionTexts
+      };
     }
     if (this.step.options && this.step.options.actionTexts) {
       this.appliedTexts = {
         ...this.appliedTexts,
         ...this.step.options.actionTexts
       };
+    }
+    if (this.step.title) {
+      this.titleSafe = this.sani.bypassSecurityTrustHtml(this.step.title);
+    }
+    if (this.step.prompt) {
+      this.promptSafe = this.sani.bypassSecurityTrustHtml(this.step.prompt);
     }
   }
   finishTutorial() {

@@ -23,6 +23,10 @@ import { NgyTutorialModule } from 'ngy-tutorial';
         previousBtn: ['btn', 'btn-default', 'btn-outline'],
         finishBtn: ['btn', 'btn-success', 'btn-outline'],
         skipBtn: ['btn', 'btn-secondary', 'btn-outline'],
+      },
+      actionTexts: {
+        next: 'Next Step',
+        previous: 'Previous Step'
       }
     })
   ],

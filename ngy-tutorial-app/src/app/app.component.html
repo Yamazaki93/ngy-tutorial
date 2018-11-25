@@ -9,7 +9,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
       </ul>
-      <form class="form-inline my-2 my-lg-0">
+      <form class="form-inline my-2 my-lg-0" id="nav-search-elem">
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
       </form>
@@ -17,33 +17,33 @@
   </nav>
   <div class="container mt-3">
     <div class="row d-flex flex-row">
-      <div class="col-3">
+      <div class="col-3" id="side-navigation">
         <ul class="nav flex-column">
           <li class="nav-item">
-            <a class="nav-link active" href="#">Demo</a>
+            <a class="nav-link" href="javascript:void(0)" (click)="scrollTo('demo-section')">Demo</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Getting Started</a>
+            <a class="nav-link" href="javascript:void(0)" (click)="scrollTo('getting-started-section')">Getting Started</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">API</a>
+            <a class="nav-link" href="javascript:void(0)" (click)="scrollTo('api-section')">API</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Support This Plugin</a>
+            <a class="nav-link" href="javascript:void(0)" (click)="scrollTo('support-section')">Support This Plugin</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="https://github.com/Yamazaki93/ngy-tutorial">Github</a>
           </li>
         </ul>
       </div>
-      <div class="col-9 contents">
-        <section>
+      <div class="col-9 contents" [class.hide-overflow]="tutorialInProgress">
+        <section id="demo-section">
           <h2>Demo</h2>
-          <p>This demo section contains some cool UI 😉. So cool that we need to use a tutorial to show our user what
+          <p>This demo section contains some cool UI 😎. So cool that we need to use a tutorial to show our user what
             to
             do.</p>
-          <h3>Here's Large Form That No One Knows How To Fill</h3>
-          <form>
+          <form id="demo-form">
+            <h3>Here's A Very Intuitive Form 😜</h3>
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group">
@@ -54,12 +54,12 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <input type="text" placeholder="Don't know why this is disabled" class="form-control form-control-alternative"
-                    disabled />
+                    disabled id="disabledInput" />
                 </div>
               </div>
             </div>
             <div class="row">
-              <div class="col-md-6">
+              <div class="col-md-12">
                 <div class="form-group">
                   <div class="input-group input-group-alternative mb-4">
                     <div class="input-group-prepend">
@@ -70,10 +70,11 @@
                   </div>
                 </div>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-12">
                 <div class="form-group">
                   <div class="input-group input-group-alternative mb-4">
-                    <input class="form-control" placeholder="This input has a nice calendar icon" type="text">
+                    <input class="form-control" placeholder="The icon probably means to enter some kind of date here?"
+                      type="text">
                     <div class="input-group-append">
                       <span class="input-group-text"><i class="ion-ios-calendar"></i></span>
                     </div>
@@ -83,17 +84,17 @@
             </div>
             <div class="row">
               <div class="col-12">
-                <button class="btn btn-danger">Important Button</button>
+                <button class="btn btn-danger" id="important-btn" (click)="importantBtn()">Important Button</button>
               </div>
             </div>
           </form>
           <div class="row mt-3">
             <div class="col-12">
-              <button class="btn btn-primary">Restart The Tutorial</button>
+              <button class="btn btn-primary" (click)="restart()">Restart The Tutorial</button>
             </div>
           </div>
         </section>
-        <section class="mt-3">
+        <section class="mt-3" id="getting-started-section">
           <h2>Getting Started</h2>
           <p>
             Add the library by using npm with <code>npm install ngy-tutorial</code> or yarn with <code>yarn add ngy-tutorial</code>
@@ -103,19 +104,26 @@
               in your <code>app.module.ts</code>.
             </li>
             <li>Place element <code>&lt;lib-ngy-tutorial&gt;&lt;/lib-ngy-tutorial&gt;</code> in your app.</li>
-            <li>You can now inject and use <code>NgyTutorialService</code> service to control the tutorial, see the API
-              for available commands and options.</li>
+            <li>Inject and use <code>NgyTutorialService.addStep(...)</code> to add steps to your tutorial</li>
+            <li>Call <code>NgyTutorialService.showTutorial()</code> in <b>ngOnInit</b> to start the tutorial.</li>
           </ol>
+          <h3>Example:</h3>
+          <p>This is a simple 2 step tutorial, the first step is a general step without focus and the second step draws focuses on the element <code>#input-element</code></p>
+          <code style="white-space: pre-wrap;" [innerHTML]="code">
+            
+          </code>
+          <p>For a more in-depth example, checkout the code for this demo page <a href="https://github.com/Yamazaki93/ngy-tutorial/blob/master/ngy-tutorial-app/src/app/app.component.ts">here</a></p>
         </section>
-        <section class="mt-3">
+        <section class="mt-3" id="api-section">
           <h2>API</h2>
           <div class="card">
             <div class="card-body">
               <h2 class="card-title">Module - <code>NgyTutorialModule</code></h2>
               <div class="row">
                 <div class="col-12">
-                  <p><code>forRoot(options: IInitializationOptions)</code></p>
-                  <p>Initializes the module with the passed in options, see <code>IInitializationOptions</code> for
+                  <p><code>forRoot(options?: IInitializationOptions)</code></p>
+                  <p>Initializes the module with the passed in options (optional), see <code>IInitializationOptions</code>
+                    for
                     available options</p>
                 </div>
               </div>
@@ -124,6 +132,20 @@
           <div class="card">
             <div class="card-body">
               <h2 class="card-title">Service - <code>NgyTutorialService</code></h2>
+              <div class="row">
+                <div class="col-12">
+                  <p>Field - <code>tutorialInProgress: Observable&lt;boolean&gt;</code></p>
+                  <p>Contains the current tutorial state. <code>true</code> if the tutorial is in progress, <code>fasle</code>
+                    otherwise</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <p>Field - <code>CurrentStep: Observable&lt;number&gt;</code></p>
+                  <p>The current tutorial step as a zero-indexed number. NOTE, this should not be used to determine if
+                    tutorial is in progress, use <code>tutorialInProgress</code> instead.</p>
+                </div>
+              </div>
               <div class="row">
                 <div class="col-12">
                   <p><code>addStep(title: string, prompt: string, options?: IStepOption)</code></p>
@@ -175,19 +197,135 @@
               <h2 class="card-title">Interface - <code>IInitializationOptions</code></h2>
               <div class="row">
                 <div class="col-12">
-                  <p>Field <code>classToAdd?: IStepClasses</code></p>
+                  <p>Optional Field <code>classToAdd?: IStepClasses</code></p>
                   <p>Specifies classes to apply to the prompt dialog to allow customized styling. See <code>IStepClasses</code>
                     for list of available sub-fields</p>
-                  <p>Field <code>actionTexts?: IActionTexts</code></p>
+                  <p>Optional Field <code>actionTexts?: IActionTexts</code></p>
                   <p>Specifies the button texts that appear on the prompt. See <code>IActionTexts</code>
                     for list of available sub-fields</p>
                 </div>
               </div>
             </div>
           </div>
+          <div class="card">
+            <div class="card-body">
+              <h2 class="card-title">Interface - <code>IStepOption</code></h2>
+              <div class="row">
+                <div class="col-12">
+                  <p>Optional Field <code>placement?: StepPromptPlacement</code></p>
+                  <p>Specifies the placement of the prompt for each step. This will only have effect if <code>relatedElement</code>
+                    is set properly. The prompt is placed at the center of the screen by default.</p>
+                  <p>Optional Field <code>relatedElement?: string</code></p>
+                  <p>The ID of the DOM element that this step is focusing on. Cover will be applied to the screen and
+                    show a "viewing window" highlighting the element of interest. If the ID is not found on the DOM,
+                    the behavior is the same as if this option is not set.</p>
+                  <p>Optional Field <code>disableInteraction?: boolean</code></p>
+                  <p>If this is set to <code>true</code>. Interaction with components other than the tutorial is
+                    disabled, the "viewing window" will still focus on the element provided in <code>relatedElement</code>
+                    but no action can be perfored. It cannot be set to <code>true</code> if <code>disableNext</code> is
+                    set to <code>true</code>.</p>
+                  <p>Optional Field <code>disableNext?: boolean</code></p>
+                  <p>If this is set to <code>true</code>, the next button (the finish button, if it is at last step) is
+                    disabled. To progress forward, you can still call <code>NgyTutorialService.nextStep()</code>. It
+                    cannot be set to <code>true</code> if <code>disableInteraction</code> is set to <code>true</code>.</p>
+                  <p>Optional Field <code>disablePrevious?: boolean</code></p>
+                  <p>If this is set to <code>true</code>, the previous button (the skip button, if it is at first step)
+                    is disabled. To progress backward, you can still call <code>NgyTutorialService.previousStep()</code>.
+                    NOTE: It CAN be set to <code>true</code> when <code>disableNext</code> is set to <code>true</code>
+                    or <code>disableInteraction</code> is <code>true</code>, it is up to your app to determine the
+                    availability of "previous" step.</p>
+                  <p>Optional Field <code>classToAdd?: IStepClasses</code></p>
+                  <p>Specify classes to add to the prompt dialog for this class. The classes will be applied on top of
+                    the classes specifies in the initialization options. Except for classes for various <code>*Icon</code>,
+                    they will override the classes specified in the initialization options.</p>
+                  <p>Optional Field <code>actionTexts?: IActionTexts</code></p>
+                  <p>Overrides the text for the action buttons in the prompt for this step.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-body">
+              <h2 class="card-title">Interface - <code>IStepClasses</code></h2>
+              <div class="row">
+                <div class="col-12">
+                  <p>Optional Field <code>container?: string[]</code></p>
+                  <p>Specifies a list of class names to apply to the prompt container</p>
+                  <p>Optional Field <code>title?: string[]</code></p>
+                  <p>Specifies a list of class names to apply to the prompt title</p>
+                  <p>Optional Field <code>prompt?: string[]</code></p>
+                  <p>Specifies a list of class names to apply to the prompt text</p>
+                  <p>Optional Field <code>previousBtn?: string[]</code></p>
+                  <p>Specifies a list of class names to apply to the "Previous Step" button</p>
+                  <p>Optional Field <code>previousIcon?: string</code></p>
+                  <p>Specifies the class name for the icon of the "Previous Step" button. If no classes are supplied
+                    by both <code>IStepOption</code> and <code>IInitializationOptions</code>, the icon is hidden</p>
+                  <p>Optional Field <code>nextBtn?: string[]</code></p>
+                  <p>Specifies a list of class names to apply to the "Next Step" button</p>
+                  <p>Optional Field <code>nextIcon?: string</code></p>
+                  <p>Specifies the class name for the icon of the "Next Step" button. If no classes are supplied
+                    by both <code>IStepOption</code> and <code>IInitializationOptions</code>, the icon is hidden</p>
+                  <p>Optional Field <code>finishBtn?: string[]</code></p>
+                  <p>Specifies a list of class names to apply to the "Finish" button. This will only have effect for
+                    the last step</p>
+                  <p>Optional Field <code>finishIcon?: string</code></p>
+                  <p>Specifies the class name for the icon of the "Finish" button. If no classes are supplied
+                    by both <code>IStepOption</code> and <code>IInitializationOptions</code>, the icon is hidden</p>
+                  <p>Optional Field <code>skipBtn?: string[]</code></p>
+                  <p>Specifies a list of class names to apply to the "Skip" button. This will only have effect for
+                    the first step</p>
+                  <p>Optional Field <code>skipIcon?: string</code></p>
+                  <p>Specifies the class name for the icon of the "Skip" button. If no classes are supplied
+                    by both <code>IStepOption</code> and <code>IInitializationOptions</code>, the icon is hidden</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-body">
+              <h2 class="card-title">Interface - <code>IActionTexts</code></h2>
+              <div class="row">
+                <div class="col-12">
+                  <p>Optional Field <code>next?: string</code></p>
+                  <p>Specify the text for the "Next" button, the default is "Next"</p>
+                  <p>Optional Field <code>previous?: string[]</code></p>
+                  <p>Specify the text for the "Previous" button, the default is "Previous"</p>
+                  <p>Optional Field <code>skip?: string[]</code></p>
+                  <p>Specify the text for the "Skip" button, the default is "Skip"</p>
+                  <p>Optional Field <code>finish?: string[]</code></p>
+                  <p>Specify the text for the "Finish" button, the default is "Finish"</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-body">
+              <h2 class="card-title">Enum - <code>StepPromptPlacement</code></h2>
+              <div class="row">
+                <div class="col-12">
+                  <p>This is used to specify the placement of the prompt during the tutorial. Specifying the placement
+                    only has effect if <code>relatedElement</code> is set properly. The prompt placement will be
+                    adjusted so that the prompt is always in view. Note, this means placing prompt improperly can cover the viewing window.</p>
+                  <p><code>Above</code></p>
+                  <p>The prompt is placed above the viewing window</p>
+                  <p><code>Below</code></p>
+                  <p>The prompt is placed below the viewing window</p>
+                  <p><code>Left</code></p>
+                  <p>The prompt is placed at the left of the viewing window</p>
+                  <p><code>Right</code></p>
+                  <p>The prompt is placed at the right of the viewing window</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </section>
-        <section class="mt-3">
+        <section class="mt-3" id="support-section">
           <h2>Support Ngy-Tutorial</h2>
+          <p>If you like this plugin, consider </p>
+          <link href="https://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext" rel="stylesheet"><a class="bmc-button"
+          target="_blank" href="https://www.buymeacoffee.com/mjCsGWDTS"><img src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg"
+            alt="Buy me a tea"><span style="margin-left:5px">Buy me a tea</span></a>
+          
         </section>
       </div>
     </div>
