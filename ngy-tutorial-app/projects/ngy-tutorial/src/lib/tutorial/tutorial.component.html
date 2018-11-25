@@ -1,0 +1,12 @@
+<lib-ngy-tutorial-prompt *ngIf="enabled" @fadeAnimation [step]="steps[currentStep]" [stepNumber]="currentStep" [totalSteps]="steps.length" #prompt></lib-ngy-tutorial-prompt>
+<div class="window-cover full-width" #topCover *ngIf="enabled" @fadeAnimation>
+</div>
+<div class="window-cover" #leftCover *ngIf="enabled" @fadeAnimation>
+</div>
+<div class="window-cover" #rightCover *ngIf="enabled" @fadeAnimation>
+</div>
+<div class="window-cover full-width" #bottomCover *ngIf="enabled" @fadeAnimation>
+</div>
+<div class="element-cover" #elementCover>
+
+</div>

@@ -1,0 +1,45 @@
+
+.prompt-container {
+    min-width: 10vw;
+    max-width: 30vw;
+    border-radius: 3px;
+    padding: 10px;
+    background: var(--gray-dark);
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.6);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    .title {
+        margin-bottom: 10px;
+    }
+    .prompt {
+        text-align: center;
+    }
+    .action-container {
+        margin-top: 10px;
+        display: flex;
+        width: 100%;
+        flex-direction: row;
+        .actions {
+            width: 100%;
+            display: flex;
+            padding: 10px;
+            &.left {
+                align-items: flex-start;
+            }
+            &.right {
+                justify-content: flex-end;
+            }
+        }
+    }
+}
+
+.smooth-2 {
+    -webkit-transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+    -moz-transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+    -ms-transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+    -o-transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+    transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
