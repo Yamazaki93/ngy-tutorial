@@ -2,16 +2,16 @@
 
 Ngy-Tutorial is an Angular plugin that gives your Angular app a built-in, customizable, user-friendly, literally "getting started" 🤓 tutorial.
 
-So you've got your killer UI that's intuitive, slick and responsive, but will everyone know how to use it? What about some nice shortcuts or features that you want to highlight? Or maybe some UI changes that you want the users to be aware of? No one really want's to read through a long readme file, so how about an interactive, in-app tutorial? Ngy-Tutorial literally adds a step-by-step "tutorial" to your app so you can highlight your cool UI and give every user a head start.
+So you've got your killer UI that's intuitive, slick and responsive, but will everyone know how to use it? What about some nice shortcuts or features that you want to highlight? Or maybe some UI changes that you want the users to be aware of? No one really wants to read through a long readme file, so how about an interactive, in-app tutorial? Ngy-Tutorial literally adds a step-by-step "tutorial" to your app so you can highlight your cool UI and give every user a head start.
 
 Check out the [Demo Site](https://yamazaki93.github.io/ngy-tutorial/ngy-tutorial-app/)!
 
 ## Highlghts
 
  - Customizable steps that allows you to add and remove steps on the fly.
- - Per-step adjustable focus that hightlights any revelant elements by DOM id.
- - Ability to allow/disallow interaction with your live app while tutorial is progressing.
- - Programmatic navigation and control allow you to customize the experience to your need.
+ - Per-step adjustable "viewing window" that hightlights any revelant element by DOM id.
+ - Ability to allow/disallow interaction with your app while the tutorial is progressing.
+ - Programmatic navigation and control allows you to customize the tutorial experience to your need.
  - Customizable prompt and button styling.
 
 ## Built With
@@ -23,6 +23,8 @@ Demo page is built with <a href="https://demos.creative-tim.com/argon-dashboard/
 ## Installation
 
 Add the library by using npm with `npm install ngy-tutorial` or yarn with `yarn add ngy-tutorial`
+
+Tested under Angular 6
 
 ## Getting Started (even the tutorial needs a tutorial)
 
@@ -49,12 +51,12 @@ Add the library by using npm with `npm install ngy-tutorial` or yarn with `yarn 
 
 ## FAQ and Notes
 
- - Note, scrolling in the view window: The viewing window allows all interaction including scrolling, which means user can scroll the intended element away during the tutorial. Your app should disable scrolling during the tutorial if scrolling is not desired.
+ - Note, scrolling in the viewing window: The viewing window allows all interaction including scrolling, which means user can scroll the intended element away during the tutorial. Your app should disable scrolling during the tutorial if scrolling is not desired.
  - The tutorial doesnt start? Try calling `NgyTutorialService.showTutorial()` in or after `ngOnInit`.
 
 ## Current Limitations & Future Plans
 
 There are currently few limitations of Ngy-Tutorial and some will be improved in the future.
 
- - Scrolling support: The tutorial currently is limited to single-view layout tutorials. In the future it is planned to support scrolling.
+ - Scrolling support: The tutorial currently is limited to single-view layout tutorials. In the future it is planned to support scrolling to element.
  - Square view window only: Because of the way how "covers" are layed out, the preview window that hightlight an element is square only.
