@@ -52,6 +52,7 @@ Add the library by using npm with `npm install ngy-tutorial` or yarn with `yarn 
 ## FAQ and Notes
 
  - Note, Scrollin in the view window: The viewing window allows all interaction including scrolling, which means user can scroll away from the tutorial. Your app should disable scrolling during the tutorial if that's desired.
+ - The tutorial doesnt start? Try calling `NgyTutorialService.showTutorial()` in or after `ngOnInit`.
 
 ## Current Limitations & Future Plans
 
