@@ -55,6 +55,7 @@ Tested under Angular 6
 
  - Note, scrolling in the viewing window: The viewing window allows all interaction including scrolling, which means user can scroll the intended element away during the tutorial. Your app should disable scrolling during the tutorial if scrolling is not desired.
  - The tutorial doesnt start? Try calling `NgyTutorialService.showTutorial()` in or after `ngOnInit`.
+ - Some elements are overlaying on top of the prompt? Try setting the z-index of `<lib-ngy-tutorial></lib-ngy-tutorial>` to be higher than other elements. This issue can happen if you already elements with z-indices. Also be sure to place `<lib-ngy-tutorial>` towards the end of your page.
 
 ## Current Limitations & Future Plans
 
