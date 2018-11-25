@@ -50,7 +50,9 @@ export class AppComponent implements OnInit {
       placement: StepPromptPlacement.Left,
       classToAdd: {
         container: ['bg-danger'],
-        nextBtn: ['btn-success']
+        nextBtn: ['btn-success'],
+        nextIcon: 'ion-ios-thumbs-up',
+        previousIcon: 'ion-ios-thumbs-down',
       },
       actionTexts: {
         previous: 'Last Step Please!',
@@ -66,7 +68,7 @@ export class AppComponent implements OnInit {
       placement: StepPromptPlacement.Right,
       disableNext: true
     });
-    tutorialService.addStep('Hope You Like It!', 'Excited? Intergrating Ngy-Tutorial is very easy! Head over to "Getting Started" and give your Angular app a great tutorial. <br> And if you like Ngy-Tutorial, \
+    tutorialService.addStep('Hope You Like It!', 'Excited? Intergrating Ngy-Tutorial is as easy as 1-2-3! Head over to "Getting Started" and give your Angular app a great tutorial. <br> And if you like Ngy-Tutorial, \
     consider <br> <a class="bmc-button" target="_blank" href="https://www.buymeacoffee.com/mjCsGWDTS"><img src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg" alt="Buy me a tea"><span style="margin-left:5px">Buy me a tea</span></a> <br> See that? HTML elements work in the prompt too 😉');
     this.tutorialService.tutorialInProgress.subscribe(ip => {
       this.tutorialInProgress = ip;
@@ -81,8 +83,9 @@ export class AppComponent implements OnInit {
       el.scrollIntoView();
     }
   }
-  importantBtn() {
+  importantBtn($event) {
     this.tutorialService.nextStep();
+    $event.preventDefault();
   }
   restart() {
     this.tutorialService.showTutorial();

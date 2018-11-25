@@ -8,6 +8,9 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/Yamazaki93/ngy-tutorial"><i style="font-size: 24px" class="ion-logo-github"></i></a>
+        </li>
       </ul>
       <form class="form-inline my-2 my-lg-0" id="nav-search-elem">
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -32,7 +35,7 @@
             <a class="nav-link" href="javascript:void(0)" (click)="scrollTo('support-section')">Support This Plugin</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="https://github.com/Yamazaki93/ngy-tutorial">Github</a>
+            <a class="nav-link" href="javascript:void(0)" (click)="scrollTo('technical-section')">Technicals</a>
           </li>
         </ul>
       </div>
@@ -84,7 +87,7 @@
             </div>
             <div class="row">
               <div class="col-12">
-                <button class="btn btn-danger" id="important-btn" (click)="importantBtn()">Important Button</button>
+                <button class="btn btn-danger" id="important-btn" (click)="importantBtn($event)">Important Button</button>
               </div>
             </div>
           </form>
@@ -108,9 +111,10 @@
             <li>Call <code>NgyTutorialService.showTutorial()</code> in <b>ngOnInit</b> to start the tutorial.</li>
           </ol>
           <h3>Example:</h3>
-          <p>This is a simple 2 step tutorial, the first step is a general step without focus and the second step draws focuses on the element <code>#input-element</code></p>
+          <p>This is a simple 2 step tutorial, the first step is a general step without focus and the second step draws
+            focuses on the element <code>#input-element</code></p>
           <code style="white-space: pre-wrap;" [innerHTML]="code">
-            
+
           </code>
           <p>For a more in-depth example, checkout the code for this demo page <a href="https://github.com/Yamazaki93/ngy-tutorial/blob/master/ngy-tutorial-app/src/app/app.component.ts">here</a></p>
         </section>
@@ -305,7 +309,8 @@
                 <div class="col-12">
                   <p>This is used to specify the placement of the prompt during the tutorial. Specifying the placement
                     only has effect if <code>relatedElement</code> is set properly. The prompt placement will be
-                    adjusted so that the prompt is always in view. Note, this means placing prompt improperly can cover the viewing window.</p>
+                    adjusted so that the prompt is always in view. Note, this means placing prompt improperly can cover
+                    the viewing window.</p>
                   <p><code>Above</code></p>
                   <p>The prompt is placed above the viewing window</p>
                   <p><code>Below</code></p>
@@ -323,9 +328,25 @@
           <h2>Support Ngy-Tutorial</h2>
           <p>If you like this plugin, consider </p>
           <link href="https://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext" rel="stylesheet"><a class="bmc-button"
-          target="_blank" href="https://www.buymeacoffee.com/mjCsGWDTS"><img src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg"
-            alt="Buy me a tea"><span style="margin-left:5px">Buy me a tea</span></a>
-          
+            target="_blank" href="https://www.buymeacoffee.com/mjCsGWDTS"><img src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg"
+              alt="Buy me a tea"><span style="margin-left:5px">Buy me a tea</span></a>
+          <p>Or alternatively</p>
+          <p><code>BTC: 3CAgw9vNPNXHR1YaWmJe98DDiTqdgKkv8Y</code></p>
+          <p><code>ETH: 0xea96AA397a799E77f5991A2568099698329C3D39</code></p>
+        </section>
+        <section class="mt-3" id="technical-section">
+          <h2>Technicals</h2>
+          <h4>Other Libraries:</h4>
+          <p>This demo app is made with <a href="https://ionicons.com">IonIcons</a>, <a href="https://demos.creative-tim.com/argon-dashboard/index.html">Argon
+              Dashboard by Creative Tim</a></p>
+          <h4>Browser support:</h4>
+          <p>Chrome: 70.0, Vivaldi: 2.1, Edge: 47.17134, Firefox: 63.0</p>
+          <h4>Technical Notes</h4>
+          <ul>
+            <li>z-indicies: The tutorial prompt is set at z-index 999 and the backdrop cover is at z-index 998.</li>
+            <li>scrolling in the viewing window: If scrolling in the viewing window during the tutorial is not desired,
+              use <code>NgyTutorialService.tutorialInProgress</code> to disable scrolling</li>
+          </ul>
         </section>
       </div>
     </div>
