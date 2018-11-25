@@ -2,6 +2,8 @@
 
 Ngy-Tutorial is an Angular plugin that gives your Angular app a built-in, customizable, user-friendly, literally "getting started" 🤓 tutorial.
 
+![alt text](https://github.com/Yamazaki93/ngy-tutorial/raw/master/misc/demo.gif "Preview")
+
 So you've got your killer UI that's intuitive, slick and responsive, but will everyone know how to use it? What about some nice shortcuts or features that you want to highlight? Or maybe some UI changes that you want the users to be aware of? No one really wants to read through a long readme file, so how about an interactive, in-app tutorial? Ngy-Tutorial literally adds a step-by-step "tutorial" to your app so you can highlight your cool UI and give every user a head start.
 
 Check out the [Demo Site](https://yamazaki93.github.io/ngy-tutorial/ngy-tutorial-app/)!
