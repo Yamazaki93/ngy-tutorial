@@ -98,35 +98,37 @@ export class PromptComponent implements OnInit {
     this.svc.previousStep();
   }
   setPromptForElement(elem?: any, placement?: StepPromptPlacement) {
-    const promptPositionInfo = this.prompt.nativeElement.getBoundingClientRect();
-    const viewW = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-    const viewH = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-    const promptH = promptPositionInfo.height;
-    const promptW = promptPositionInfo.width;
-    if (!elem || placement === undefined) {
-      this.setPromptPosition(viewW / 2 - promptW / 2, viewH / 2 - promptH / 2);
-    } else {
-      const positionInfo = elem.getBoundingClientRect();
-      if (placement === StepPromptPlacement.Right) {
-        this.setPromptPosition(
-          positionInfo.left + positionInfo.width + 20,
-          positionInfo.top + positionInfo.height / 2 - promptH / 2);
-      } else if (placement === StepPromptPlacement.Left) {
-        this.setPromptPosition(
-          positionInfo.left - promptW - 20,
-          positionInfo.top + positionInfo.height / 2 - promptH / 2);
-      } else if (placement === StepPromptPlacement.Above) {
-        this.setPromptPosition(
-          positionInfo.left + positionInfo.width / 2 - promptW / 2,
-          positionInfo.top - 20 - promptH
-        );
+    setTimeout(() => {
+      const promptPositionInfo = this.prompt.nativeElement.getBoundingClientRect();
+      const viewW = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+      const viewH = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+      const promptH = promptPositionInfo.height;
+      const promptW = promptPositionInfo.width;
+      if (!elem || placement === undefined) {
+        this.setPromptPosition(viewW / 2 - promptW / 2, viewH / 2 - promptH / 2);
       } else {
-        this.setPromptPosition(
-          positionInfo.left + positionInfo.width / 2 - promptW / 2,
-          positionInfo.top + positionInfo.height + 20
-        );
+        const positionInfo = elem.getBoundingClientRect();
+        if (placement === StepPromptPlacement.Right) {
+          this.setPromptPosition(
+            positionInfo.left + positionInfo.width + 20,
+            positionInfo.top + positionInfo.height / 2 - promptH / 2);
+        } else if (placement === StepPromptPlacement.Left) {
+          this.setPromptPosition(
+            positionInfo.left - promptW - 20,
+            positionInfo.top + positionInfo.height / 2 - promptH / 2);
+        } else if (placement === StepPromptPlacement.Above) {
+          this.setPromptPosition(
+            positionInfo.left + positionInfo.width / 2 - promptW / 2,
+            positionInfo.top - 20 - promptH
+          );
+        } else {
+          this.setPromptPosition(
+            positionInfo.left + positionInfo.width / 2 - promptW / 2,
+            positionInfo.top + positionInfo.height + 20
+          );
+        }
       }
-    }
+    });
   }
   private setPromptPosition(x: number, y: number) {
     const promptPositionInfo = this.prompt.nativeElement.getBoundingClientRect();

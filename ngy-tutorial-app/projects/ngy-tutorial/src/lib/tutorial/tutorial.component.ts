@@ -77,6 +77,7 @@ export class NgyTutorialComponent implements OnInit {
     const step = this.steps[this.currentStep];
     if (step) {
       this.resetCovers();
+      this.prompt.ngOnInit();
       if (!step.options.relatedElement) {
         this.coverAll();
       } else {
@@ -91,7 +92,6 @@ export class NgyTutorialComponent implements OnInit {
           this.coverAll();
         }
       }
-      this.prompt.ngOnInit();
     }
   }
   private coverElement(element: Element) {
