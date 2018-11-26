@@ -1,6 +1,11 @@
 
+$small-screen: 768px;
+
 .prompt-container {
     max-width: 40vw;
+    @media screen and (max-width: $small-screen){
+        max-width: 95vw;
+    }
     border-radius: 3px;
     padding: 10px;
     background: #222;

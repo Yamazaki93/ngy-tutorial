@@ -3,6 +3,7 @@ import { ITutorialStep } from '../api/i-tutorial-step';
 import { StepPromptPlacement, IInitializationOptions, IStepClasses, IActionTexts } from '../api/i-options';
 import { NgyTutorialService } from '../ngy-tutorial.service';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'lib-ngy-tutorial-prompt',
@@ -19,9 +20,12 @@ export class PromptComponent implements OnInit {
   appliedTexts: IActionTexts;
   titleSafe: SafeHtml;
   promptSafe: SafeHtml;
+  overrideButtonDisable = false;
+  private margin = 10;
   constructor(
     private svc: NgyTutorialService,
     private sani: DomSanitizer,
+    @Inject(DOCUMENT) private document: any,
     @Inject('ngy-tutorial-options') private options: IInitializationOptions
   ) {
     this.appliedClasses = {};
@@ -110,45 +114,68 @@ export class PromptComponent implements OnInit {
         const positionInfo = elem.getBoundingClientRect();
         if (placement === StepPromptPlacement.Right) {
           this.setPromptPosition(
-            positionInfo.left + positionInfo.width + 20,
+            positionInfo.left + positionInfo.width + 2 * this.margin,
             positionInfo.top + positionInfo.height / 2 - promptH / 2);
         } else if (placement === StepPromptPlacement.Left) {
           this.setPromptPosition(
-            positionInfo.left - promptW - 20,
+            positionInfo.left - promptW - 2 * this.margin,
             positionInfo.top + positionInfo.height / 2 - promptH / 2);
         } else if (placement === StepPromptPlacement.Above) {
           this.setPromptPosition(
             positionInfo.left + positionInfo.width / 2 - promptW / 2,
-            positionInfo.top - 20 - promptH
+            positionInfo.top - 2 * this.margin - promptH
           );
         } else {
           this.setPromptPosition(
             positionInfo.left + positionInfo.width / 2 - promptW / 2,
-            positionInfo.top + positionInfo.height + 20
+            positionInfo.top + positionInfo.height + 2 * this.margin
           );
         }
+        setTimeout(() => {
+          this.overrideButtonDisable = this.isPromptCoveringElement(elem);
+        }, 200);
       }
     });
   }
-  private setPromptPosition(x: number, y: number) {
+  private setPromptPosition(left: number, top: number) {
     const promptPositionInfo = this.prompt.nativeElement.getBoundingClientRect();
     const viewW = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
     const viewH = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
     const promptH = promptPositionInfo.height;
     const promptW = promptPositionInfo.width;
-    if (x < 10) {
-      x = 10;
+    if (left < this.margin) {
+      left = this.margin;
     }
-    if (y < 10) {
-      y = 10;
+    if (top < this.margin) {
+      top = this.margin;
     }
-    if (x > viewW - promptW) {
-      x = viewW - promptW;
+    if (left > viewW - promptW - this.margin) {
+      left = viewW - promptW - this.margin;
     }
-    if (y > viewH - promptH) {
-      y = viewH - promptH;
+    if (top > viewH - promptH - this.margin) {
+      top = viewH - promptH - this.margin;
     }
-    this.prompt.nativeElement.style.left = `${x}px`;
-    this.prompt.nativeElement.style.top = `${y}px`;
+    this.prompt.nativeElement.style.left = `${left}px`;
+    this.prompt.nativeElement.style.top = `${top}px`;
+  }
+  private isPromptCoveringElement(elem: any): boolean {
+    if(!elem) {
+      return false;
+    }
+    const promptPositionInfo = this.prompt.nativeElement.getBoundingClientRect();
+    const promptL = promptPositionInfo.left;
+    const promptT = promptPositionInfo.top;
+    const promptLW = promptL + promptPositionInfo.width;
+    const promptTH = promptT + promptPositionInfo.height;
+    const positionInfo = elem.getBoundingClientRect();
+    const elementL = positionInfo.left;
+    const elementT = positionInfo.top;
+    const elementLW = elementL + positionInfo.width;
+    const elementTH = elementT + positionInfo.height;
+    if(promptTH < elementT || promptT > elementTH || promptLW < elementL || promptL > elementLW) {
+      return false;
+    } else {
+      return true;
+    }
   }
 }
