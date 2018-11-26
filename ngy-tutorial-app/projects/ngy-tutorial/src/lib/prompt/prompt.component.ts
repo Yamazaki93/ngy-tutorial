@@ -132,7 +132,7 @@ export class PromptComponent implements OnInit {
           );
         }
         setTimeout(() => {
-          this.overrideButtonDisable = this.isPromptCoveringElement(elem);
+          this.overrideButtonDisable = this.isPromptCoveringElement(elem) || this.isElementOutOfView(elem);
         }, 200);
       }
     });
@@ -170,12 +170,22 @@ export class PromptComponent implements OnInit {
     const positionInfo = elem.getBoundingClientRect();
     const elementL = positionInfo.left;
     const elementT = positionInfo.top;
-    const elementLW = elementL + positionInfo.width;
-    const elementTH = elementT + positionInfo.height;
-    if(promptTH < elementT || promptT > elementTH || promptLW < elementL || promptL > elementLW) {
+    const elementCenterX = elementL + positionInfo.width / 2;
+    const elementCenterY = elementT + positionInfo.height / 2;
+    if(promptTH < elementCenterY || promptT > elementCenterY || promptLW < elementCenterX || promptL > elementCenterX) {
       return false;
     } else {
       return true;
+    }
+  }
+  private isElementOutOfView(elem: any): boolean {
+    const positionInfo = elem.getBoundingClientRect();
+    const viewW = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+    const viewH = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+    if(positionInfo.top + positionInfo.height / 2 > viewH || positionInfo.left + positionInfo.width / 2 > viewW) {
+      return true;
+    } else {
+      return false;
     }
   }
 }
