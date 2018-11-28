@@ -8,6 +8,13 @@ So you've got your killer UI that's intuitive, slick and responsive, but will ev
 
 Check out the [Demo Site](https://yamazaki93.github.io/ngy-tutorial/ngy-tutorial-app/)!
 
+## Change Notes:
+
+0.1.5:
+
+ - Added support for small screen/mobile devices, the prompt now enlarge to the screen size on smaller devices.
+ - Added detection of covered and out of view element. If the element of interest in the viewing window is covered significantly by the prompt or it is out of the viewing area, the next button will be automatically enabled. This prevents un-finishable tutorial, especially in smaller screens.
+
 ## Highlghts
 
  - Customizable steps that allows you to add and remove steps on the fly.
