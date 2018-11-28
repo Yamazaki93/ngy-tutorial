@@ -1,6 +1,15 @@
 
+$small-screen: 768px;
+$medium-screen: 992px;
+
 .prompt-container {
     max-width: 40vw;
+    @media screen and (max-width: $small-screen){
+        max-width: 95vw;
+    }
+    @media screen and (max-width: $medium-screen) and  (min-width: $small-screen){
+        max-width: 85vw;
+    }
     border-radius: 3px;
     padding: 10px;
     background: #222;

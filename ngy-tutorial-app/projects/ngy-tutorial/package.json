@@ -1,6 +1,6 @@
 {
   "name": "ngy-tutorial",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "displayName": "Ngy-Tutorial",
   "author": {
     "name": "Michael Lu",
@@ -10,7 +10,7 @@
     "type": "github",
     "url": "https://github.com/Yamazaki93/ngy-tutorial"
   },
-  "keywords": ["angular", "angular6", "tutorial", "getting-started", "wizard"],
+  "keywords": ["angular", "angular6", "tutorial", "getting-started", "wizard", "tour", "guided"],
   "homepage": "https://yamazaki93.github.io/ngy-tutorial/ngy-tutorial-app/",
   "license": "MIT",
   "peerDependencies": {
